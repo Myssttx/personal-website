@@ -1,13 +1,11 @@
 import './style.css';
 
 /* ════════════════════════════════════════════════════════════════
-   ✏️  EDIT HERE
-   BIRTH_DATE drives the live "AGE" counter (the Valorant timer slot).
-   Format: 'YYYY-MM-DD'.
+   ✏️  EDIT HERE — birthday drives the live AGE counter.
    ════════════════════════════════════════════════════════════════ */
 const BIRTH_DATE = '2008-10-21';
 
-/* ─── Agent emblem artwork (line-art SVG, inherits agent color) ─── */
+/* ─── Agent emblem artwork ─── */
 const GLYPHS = {
   aayush: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="120 24 192 65 192 175 120 216 48 175 48 65" stroke="currentColor" stroke-width="2" opacity="0.5"/>
@@ -76,7 +74,7 @@ const GLYPHS = {
   </svg>`,
 };
 
-/* ─── Role descriptions (Valorant-style class blurbs) ─── */
+/* ─── Role class descriptions ─── */
 const ROLES = {
   'THE PLAYER': "The one making the picks. Founder, researcher and tutor — the throughline connecting every agent on this roster.",
   'DUELIST': "Duelists take space and force the tempo. They create the openings everyone else builds on.",
@@ -85,7 +83,7 @@ const ROLES = {
   'SENTINEL': "Sentinels are the anchors. They hold the line, watch the long game and lock a space down once it's won.",
 };
 
-/* ─── Agents — projects, research, ventures and the teams I lead ─── */
+/* ─── Agents ─── */
 const AGENTS = [
   {
     id: 'aayush', short: 'AAYUSH', name: 'AAYUSH PAL', role: 'THE PLAYER',
@@ -213,11 +211,22 @@ const CONTACT = [
   { label: 'PHONE', value: '214-493-8750', href: 'tel:2144938750' },
 ];
 
+/* ─── Role filters ─── */
+const FILTER_ICONS = {
+  ALL: `<svg viewBox="0 0 24 24" fill="currentColor"><rect x="3.5" y="3.5" width="7" height="7"/><rect x="13.5" y="3.5" width="7" height="7"/><rect x="3.5" y="13.5" width="7" height="7"/><rect x="13.5" y="13.5" width="7" height="7"/></svg>`,
+  DUELIST: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14 L12 5 L20 14"/><path d="M7 19 L12 13 L17 19"/></svg>`,
+  CONTROLLER: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><polygon points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5"/><circle cx="12" cy="12" r="3.4" fill="currentColor" stroke="none"/></svg>`,
+  INITIATOR: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 L20 13 H15 V21 H9 V13 H4 Z"/></svg>`,
+  SENTINEL: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3 L20 6.5 V12 C20 17 12 21 12 21 C12 21 4 17 4 12 V6.5 Z"/></svg>`,
+};
+const FILTERS = ['ALL', 'DUELIST', 'CONTROLLER', 'INITIATOR', 'SENTINEL'];
+
 /* ════════════════════════════════════════════════════════════════ */
 
 const app = document.querySelector('#app');
-let activeId = null;      // ← starts BLANK
+let activeId = null;
 let activeTab = 'info';
+let activeFilter = 'ALL';
 
 function buildShell() {
   app.innerHTML = `
@@ -230,43 +239,60 @@ function buildShell() {
     </div>
   </div>
 
-  <div class="fx" aria-hidden="true"></div>
-
   <div class="scene">
-    <div class="env-bloom"></div>
-    <div class="env-horizon"></div>
-    <div class="env-floor"></div>
-    <div class="scene-glow"></div>
+    <div class="env">
+      <div class="env-sun"></div>
+      <svg class="env-mtn" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+        <polygon class="mtn-3" points="0,320 0,196 200,150 420,188 640,134 880,180 1120,140 1340,182 1440,160 1440,320"/>
+        <polygon class="mtn-2" points="0,320 0,238 210,176 440,222 660,166 900,216 1150,170 1370,212 1440,196 1440,320"/>
+        <polygon class="mtn-1" points="0,320 0,280 260,232 520,270 780,228 1040,266 1300,232 1440,256 1440,320"/>
+      </svg>
+      <div class="env-haze"></div>
+      <div class="env-ground"></div>
+    </div>
+    <div class="scrim scrim-l"></div>
+    <div class="scrim scrim-r"></div>
+    <div class="scrim scrim-b"></div>
+    <div class="vignette"></div>
+
+    <div class="character blank" id="character"></div>
 
     <div class="mapbox">
       <div class="mapbox-icon"><span></span></div>
-      <div>
+      <div class="mapbox-text">
         <div class="mapbox-title">AGENT SELECT</div>
-        <div class="mapbox-sub">AAYUSH PAL — PORTFOLIO '26</div>
+        <div class="mapbox-sub">PORTFOLIO — CUSTOM</div>
       </div>
+      <div class="mapbox-thumb"><span>AP</span></div>
     </div>
 
-    <aside class="grid-panel">
-      <div class="panel-cap">// AGENTS — ${AGENTS.length} AVAILABLE</div>
-      <div class="agrid" id="agrid">${AGENTS.map(gridTile).join('')}</div>
-      <div class="panel-hint">SELECT AN AGENT &nbsp;·&nbsp; ◄ ► OR 1–${AGENTS.length}</div>
+    <aside class="sidebar">
+      <div class="filter-row" id="filters">
+        ${FILTERS.map(filterButton).join('')}
+      </div>
+      <div class="agent-grid" id="agrid">${AGENTS.map(gridTile).join('')}</div>
     </aside>
-
-    <div class="character blank" id="character"></div>
 
     <section class="info-panel" id="infopanel"></section>
 
     <div class="lockzone">
-      <div class="timer-cap">// AGE</div>
-      <div class="timer"><span class="age" id="age"><span class="age-int">--</span><span class="age-dec"></span></span></div>
-      <button class="lockin" id="lockin" disabled>
-        <span class="li-cap">// READY</span>
-        <span class="li-main">LOCK IN</span>
-      </button>
+      <div class="timer">
+        <span class="timer-cap">AGE</span>
+        <span class="timer-val" id="age"><span class="age-int">--</span><span class="age-dec"></span></span>
+      </div>
+      <button class="lockin" id="lockin" disabled>LOCK IN</button>
+      <div class="pickcard">
+        <div class="pick-thumb" id="pickthumb"><span class="pick-q">?</span></div>
+        <div class="pick-meta">
+          <div class="pick-name">aayush</div>
+          <div class="pick-status" id="pickstatus">Picking…</div>
+        </div>
+        <div class="pick-spk">&#9209;</div>
+      </div>
     </div>
 
-    <div class="flavor flavor-left">TEAM // AAYUSH PAL</div>
-    <div class="flavor flavor-right">LOBBY // YC STARTUP SCHOOL '26 &nbsp;&#9670;&#9670;&#9670;&#9670;&#9670;</div>
+    <div class="corner-label team-label">Team: <b>AAYUSH PAL</b></div>
+    <div class="corner-label enemy-label">LOBBY // YC STARTUP SCHOOL '26 <span class="diamonds">&#9670;&#9670;&#9670;&#9670;&#9670;</span></div>
   </div>
 
   <div class="modal" id="modal" hidden>
@@ -283,11 +309,24 @@ function buildShell() {
   </div>`;
 }
 
-function gridTile(a) {
-  return `<button class="atile" data-id="${a.id}" title="${a.name}">
-    <span class="atile-glyph" style="color:${a.accent}">${GLYPHS[a.id]}</span>
-    <span class="atile-name">${a.short}</span>
+function filterButton(f) {
+  return `<button class="filter-btn ${f === 'ALL' ? 'active' : ''}" data-filter="${f}" title="${f}">
+    ${FILTER_ICONS[f]}
   </button>`;
+}
+
+function gridTile(a) {
+  return `<button class="atile" data-id="${a.id}" data-role="${a.role}" title="${a.name}" style="--ac:${a.accent}">
+    <span class="atile-glyph">${GLYPHS[a.id]}</span>
+    <span class="atile-tip">${a.short}</span>
+  </button>`;
+}
+
+function applyFilter() {
+  document.querySelectorAll('.atile').forEach(t => {
+    const show = activeFilter === 'ALL' || t.dataset.role === activeFilter;
+    t.classList.toggle('hidden', !show);
+  });
 }
 
 /* ─── Center character ─── */
@@ -296,22 +335,18 @@ function renderCharacter() {
   if (!activeId) {
     el.classList.add('blank');
     el.innerHTML = `
-      <span class="corner tl"></span><span class="corner tr"></span>
-      <span class="corner bl"></span><span class="corner br"></span>
+      <div class="char-shadow blank"></div>
       <div class="char-blank">
-        <div class="char-blank-diamond"></div>
-        <div class="char-blank-text">AWAITING SELECTION</div>
-        <div class="char-blank-hint">// no agent loaded</div>
+        <div class="char-blank-ring"></div>
+        <div class="char-blank-text">SELECT AN AGENT</div>
       </div>`;
     return;
   }
   const a = AGENTS.find(x => x.id === activeId);
   el.classList.remove('blank');
   el.innerHTML = `
-    <span class="corner tl"></span><span class="corner tr"></span>
-    <span class="corner bl"></span><span class="corner br"></span>
-    <span class="char-scan"></span>
     <div class="char-ghost">${a.short}</div>
+    <div class="char-shadow"></div>
     <div class="char-emblem">${GLYPHS[a.id]}</div>`;
   el.classList.remove('enter');
   void el.offsetWidth;
@@ -325,16 +360,16 @@ function renderInfo() {
     panel.classList.remove('has-agent');
     panel.innerHTML = `
       <div class="ip-blank">
-        <div class="ip-cap">// no agent selected</div>
-        <div class="ip-blank-title">SELECT AN AGENT</div>
-        <p class="ip-blank-sub">Choose an agent from the grid on the left to load their full breakdown — abilities, intel and loadout.</p>
+        <div class="ip-role">// NO AGENT SELECTED</div>
+        <h1 class="ip-name">SELECT AN AGENT</h1>
+        <p class="ip-desc">Pick an agent from the grid on the left to load their full breakdown — abilities, intel and loadout. Use the role filters above the grid, or the number keys 1–${AGENTS.length}.</p>
       </div>`;
     return;
   }
   const a = AGENTS.find(x => x.id === activeId);
   panel.classList.add('has-agent');
   panel.innerHTML = `
-    <div class="ip-role">&#9670; ${a.role}</div>
+    <div class="ip-role">${a.role}</div>
     <h1 class="ip-name">${a.name}</h1>
     <div class="ip-tabs">
       <button class="ip-tab ${activeTab === 'info' ? 'active' : ''}" data-tab="info">INFO</button>
@@ -345,16 +380,16 @@ function renderInfo() {
 
 function infoContent(a) {
   if (activeTab === 'info') {
-    const metaCap = a.id === 'aayush' ? '// loadout'
-      : ['flowiq', 'civitas', 'combustion', 'research'].includes(a.id) ? '// stack'
-      : '// record';
+    const metaCap = a.id === 'aayush' ? 'LOADOUT'
+      : ['flowiq', 'civitas', 'combustion', 'research'].includes(a.id) ? 'STACK'
+      : 'RECORD';
     return `
       <div class="ip-tag">${a.tagline}</div>
-      <p class="ip-bio">${a.bio}</p>
-      <div class="ip-sub">// role &mdash; ${a.role}</div>
+      <p class="ip-desc">${a.bio}</p>
+      <div class="ip-rolehead">${a.role}</div>
       <p class="ip-roledesc">${ROLES[a.role]}</p>
-      <div class="ip-stackcap">${metaCap}</div>
-      <div class="ip-stack">${a.stack}</div>`;
+      <div class="ip-metacap">${metaCap}</div>
+      <div class="ip-meta">${a.stack}</div>`;
   }
   const ab = a.abilities.find(x => x.key === activeTab);
   return `
@@ -365,7 +400,23 @@ function infoContent(a) {
         <div class="ip-abil-name">${ab.name}</div>
       </div>
     </div>
-    <p class="ip-abil-desc">${ab.desc}</p>`;
+    <p class="ip-desc">${ab.desc}</p>`;
+}
+
+/* ─── Pick card ─── */
+function updatePick() {
+  const thumb = document.getElementById('pickthumb');
+  const status = document.getElementById('pickstatus');
+  if (!activeId) {
+    thumb.innerHTML = `<span class="pick-q">?</span>`;
+    thumb.style.removeProperty('--ac');
+    status.textContent = 'Picking…';
+    return;
+  }
+  const a = AGENTS.find(x => x.id === activeId);
+  thumb.style.setProperty('--ac', a.accent);
+  thumb.innerHTML = GLYPHS[a.id];
+  status.textContent = a.short;
 }
 
 /* ─── Selection ─── */
@@ -377,6 +428,7 @@ function selectAgent(id) {
   document.documentElement.style.setProperty('--agent', a.accent);
   renderCharacter();
   renderInfo();
+  updatePick();
   document.querySelectorAll('.atile').forEach(t => t.classList.toggle('active', t.dataset.id === id));
   document.getElementById('lockin').disabled = false;
 }
@@ -384,6 +436,13 @@ function selectAgent(id) {
 function selectTab(tab) {
   activeTab = tab;
   renderInfo();
+}
+
+function selectFilter(f) {
+  activeFilter = f;
+  activeTab = activeTab;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  applyFilter();
 }
 
 function cycleAgent(dir) {
@@ -439,6 +498,10 @@ function bindEvents() {
     const tile = e.target.closest('.atile');
     if (tile) selectAgent(tile.dataset.id);
   });
+  document.getElementById('filters').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-btn');
+    if (btn) selectFilter(btn.dataset.filter);
+  });
   document.getElementById('infopanel').addEventListener('click', e => {
     const tab = e.target.closest('.ip-tab');
     if (tab) selectTab(tab.dataset.tab);
@@ -462,6 +525,7 @@ function bindEvents() {
 buildShell();
 renderCharacter();
 renderInfo();
+updatePick();
 startAgeCounter();
 bindEvents();
 runBoot();
