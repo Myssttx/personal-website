@@ -82,7 +82,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* edge scrims keep UI readable over the bright sky */
 .scrim { position: absolute; pointer-events: none; z-index: 1; }
 .scrim-l { top: 0; bottom: 0; left: 0; width: 38%; background: linear-gradient(90deg, rgba(8,13,18,0.92), rgba(8,13,18,0.4) 45%, transparent); }
-.scrim-r { top: 0; bottom: 0; right: 0; width: 40%; background: linear-gradient(270deg, rgba(8,13,18,0.9), rgba(8,13,18,0.35) 48%, transparent); }
+.scrim-r { top: 0; bottom: 0; right: 0; width: 46%; background: linear-gradient(270deg, rgba(8,13,18,0.96), rgba(8,13,18,0.6) 42%, transparent); }
 .scrim-b { left: 0; right: 0; bottom: 0; height: 30%; background: linear-gradient(0deg, rgba(8,13,18,0.85), transparent); }
 .vignette {
   position: absolute; inset: 0; pointer-events: none; z-index: 3;
@@ -176,7 +176,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .mapbox-thumb span { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 1px; color: rgba(236,232,225,0.55); }
 
 /* ─── Sidebar: filters + agent grid ─── */
-.sidebar { position: absolute; left: 22px; top: 86px; width: 304px; }
+.sidebar { position: absolute; left: 22px; top: 86px; width: 360px; }
 .filter-row { display: flex; gap: 6px; margin-bottom: 8px; }
 .filter-btn {
   flex: 1; height: 44px;
@@ -193,8 +193,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .agent-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
-  max-height: calc(100dvh - 240px); overflow-y: auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px;
+  max-height: calc(100dvh - 230px); overflow-y: auto;
   padding-right: 2px;
 }
 .atile {
@@ -207,7 +207,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: transform 0.12s ease, border-color 0.12s ease;
 }
 .atile.hidden { display: none; }
-.atile-glyph { width: 72%; color: var(--ac); opacity: 0.82; transition: opacity 0.12s ease; }
+.atile-glyph { width: 75%; color: var(--ac); opacity: 0.85; transition: opacity 0.12s ease; }
 .atile-glyph svg { width: 100%; height: auto; display: block; }
 .atile:hover { transform: translateY(-2px); border-color: var(--ac); }
 .atile:hover .atile-glyph { opacity: 1; }
@@ -230,13 +230,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ─── Right info panel ─── */
 .info-panel {
   position: absolute; right: 34px; top: 78px;
-  width: 392px; max-height: calc(100dvh - 220px);
+  width: 410px; max-height: calc(100dvh - 210px);
   overflow-y: auto; padding-right: 4px;
   text-align: right;
 }
 .ip-role {
   font-family: 'Space Mono', monospace;
-  font-size: 12px; letter-spacing: 4px; color: var(--text);
+  font-size: 13px; letter-spacing: 4px; color: var(--text);
   text-transform: uppercase;
 }
 .ip-name {
@@ -251,8 +251,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .ip-tabs { display: flex; gap: 5px; justify-content: flex-end; margin-bottom: 18px; }
 .ip-tab {
   font-family: 'Space Mono', monospace;
-  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-  padding: 9px 13px; min-width: 38px;
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
+  padding: 10px 15px; min-width: 42px;
   background: var(--panel);
   border: 1px solid var(--line-soft);
   border-bottom: 2px solid var(--line);
@@ -267,16 +267,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .ip-content { animation: fadeIn 0.28s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-.ip-tag { font-size: 14px; font-weight: 600; font-style: italic; color: var(--agent); margin-bottom: 10px; }
-.ip-desc { font-size: 13.5px; line-height: 1.62; color: #cdd5db; margin-bottom: 18px; }
+.ip-tag { font-size: 15.5px; font-weight: 600; font-style: italic; color: var(--agent); margin-bottom: 12px; }
+.ip-desc { font-size: 15px; line-height: 1.72; color: #e2e7eb; margin-bottom: 22px; }
 .ip-rolehead {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 24px; letter-spacing: 1.5px;
-  color: var(--cream); margin-bottom: 5px;
+  font-size: 27px; letter-spacing: 1.5px;
+  color: var(--cream); margin-bottom: 6px;
 }
-.ip-roledesc { font-size: 12.5px; line-height: 1.6; color: var(--text); margin-bottom: 18px; }
-.ip-metacap { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--agent); margin-bottom: 5px; }
-.ip-meta { font-family: 'Space Mono', monospace; font-size: 11px; line-height: 1.6; color: var(--text-dim); }
+.ip-roledesc { font-size: 14px; line-height: 1.68; color: #c6cfd5; margin-bottom: 22px; }
+.ip-metacap { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--agent); margin-bottom: 6px; }
+.ip-meta { font-family: 'Space Mono', monospace; font-size: 12px; line-height: 1.65; color: var(--text); }
 
 .ip-abil { display: flex; gap: 13px; align-items: center; justify-content: flex-end; margin-bottom: 14px; }
 .ip-abil-key {
@@ -287,8 +287,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--panel);
 }
 .ip-abil-key.ult { background: var(--agent); color: var(--ink); border-color: var(--agent); }
-.ip-abil-cap { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--agent); }
-.ip-abil-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 1px; line-height: 1; margin-top: 3px; }
+.ip-abil-cap { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--agent); }
+.ip-abil-name { font-family: 'Bebas Neue', sans-serif; font-size: 31px; letter-spacing: 1px; line-height: 1; margin-top: 3px; }
 
 /* ─── Lock-in zone (bottom-center) ─── */
 .lockzone {
