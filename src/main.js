@@ -2,10 +2,10 @@ import './style.css';
 
 /* ════════════════════════════════════════════════════════════════
    ✏️  EDIT HERE
-   BIRTH_DATE drives the live "AGE" counter in the top bar.
-   Format: 'YYYY-MM-DD'.  ← replace with your real birthday.
+   BIRTH_DATE drives the live "AGE" counter (the Valorant timer slot).
+   Format: 'YYYY-MM-DD'.
    ════════════════════════════════════════════════════════════════ */
-const BIRTH_DATE = '2008-06-15';
+const BIRTH_DATE = '2008-10-21';
 
 /* ─── Agent emblem artwork (line-art SVG, inherits agent color) ─── */
 const GLYPHS = {
@@ -48,18 +48,36 @@ const GLYPHS = {
   </svg>`,
 };
 
+/* ─── Role descriptions (Valorant-style class blurbs) ─── */
+const ROLES = {
+  'THE PLAYER': "The one making the picks. Founder, researcher and tutor — the throughline connecting every agent on this roster.",
+  'DUELIST': "Duelists take space and force the tempo. They create the openings everyone else builds on.",
+  'CONTROLLER': "Controllers carve up dangerous territory — bending a messy map into something a team can actually use.",
+  'INITIATOR': "Initiators challenge what's hidden. They gather intel, expose the unknown and set up the push.",
+  'SENTINEL': "Sentinels are the anchors. They hold the line, watch the long game and lock a space down once it's won.",
+};
+
 /* ─── Agents (your projects) ─── */
+const ROSTER = [
+  { role: 'Research Assistant', org: 'University of North Texas' },
+  { role: 'Founder · $3K MRR', org: 'STEM Tutoring Co.' },
+  { role: 'President', org: 'TAMS Academic Society' },
+  { role: 'Aero Design Lead', org: 'TAMS Solar Car Team' },
+  { role: 'Jr. Coordinator', org: 'HackTAMS Hackathon' },
+];
+
 const AGENTS = [
   {
     id: 'aayush', short: 'AAYUSH', name: 'AAYUSH PAL', role: 'THE PLAYER',
     accent: '#ff4655', status: 'FOUNDER · ACTIVE',
-    tagline: 'Builder · Researcher · Founder.',
-    bio: "Seventeen, based in Denton, Texas, studying at the Texas Academy of Mathematics and Sciences. I build things that turn messy reality into something a computer can think about — and run a tutoring company on the side. Every agent here is a different answer to one question: what would it take to simulate this?",
+    tagline: 'Builder. Researcher. Founder.',
+    bio: "Seventeen, based in Denton, Texas, studying at the Texas Academy of Mathematics and Sciences. I build things that turn messy reality into something a computer can think about — and run a tutoring company on the side. Every agent on this roster is a different answer to one question: what would it take to simulate this?",
+    positions: ROSTER,
     abilities: [
-      { key: 'C', name: 'Right Abstraction', desc: "Math talent gaps are usually just timing problems in disguise." },
-      { key: 'Q', name: 'Cheap Empiricism', desc: "A good model answers a thousand questions for the price of one." },
-      { key: 'E', name: 'Decision-First', desc: "Chase problems whose answer changes what someone does tomorrow." },
-      { key: 'X', name: 'Teach To Know', desc: "You don't know it until you've taught it to someone resistant.", ult: true },
+      { key: 'C', name: 'Right Abstraction', desc: "Most 'talent gaps' in math aren't about ability — they're timing problems. A student handed the wrong representation three years too early looks behind forever, until someone swaps the abstraction." },
+      { key: 'Q', name: 'Cheap Empiricism', desc: "A good simulation is the cheapest form of experiment. Model the system well enough and you can ask it a thousand questions for the price of running one in the real world." },
+      { key: 'E', name: 'Decision-First', desc: "The problems worth chasing aren't the hardest ones — they're the ones whose answer changes what someone actually does tomorrow morning." },
+      { key: 'X', name: 'Teach To Know', desc: "You don't truly understand something until you've taught it to someone who didn't want to learn it. Resistance is the real test of whether your model holds.", ult: true },
     ],
     stack: 'denton tx · tams · founder · researcher',
   },
@@ -69,10 +87,10 @@ const AGENTS = [
     tagline: 'Aerodynamics at the speed of intuition.',
     bio: "An AI-driven aerodynamics tool. Draw an airfoil, watch what the air does to it. CFD is slow and expensive — so FlowIQ trains a predictive model on simulation data and collapses an hours-long iteration loop down to milliseconds.",
     abilities: [
-      { key: 'C', name: 'Predictive Net', desc: 'TensorFlow model trained on CFD airflow data.' },
-      { key: 'Q', name: 'Lift / Drag Solver', desc: 'Optimizes L/D ratio across airfoil designs.' },
-      { key: 'E', name: '3D Viewport', desc: 'Real-time airflow rendered with Three.js.' },
-      { key: 'X', name: 'Millisecond Loop', desc: 'Full design iteration at near-zero latency.', ult: true },
+      { key: 'C', name: 'Predictive Net', desc: "A TensorFlow model trained on CFD airflow data — it learns the mapping from airfoil geometry to aerodynamic behavior so you don't have to re-solve from scratch." },
+      { key: 'Q', name: 'Lift / Drag Solver', desc: "Scores and optimizes the lift-to-drag ratio across a space of airfoil designs, surfacing the shapes that actually perform." },
+      { key: 'E', name: '3D Viewport', desc: "Renders airflow over the airfoil in real time with Three.js — the simulation becomes something you can see and rotate, not just a number." },
+      { key: 'X', name: 'Millisecond Loop', desc: "Collapses the design-test-iterate loop from hours of CFD down to milliseconds, so airfoil design becomes something you can feel your way through.", ult: true },
     ],
     stack: 'python · tensorflow · fastapi · react · three.js',
   },
@@ -82,10 +100,10 @@ const AGENTS = [
     tagline: 'Local government you can actually use.',
     bio: "A civic-engagement platform. Report a pothole, track what's moving in your district, and read AI-summarized legislation instead of forty pages of legalese. Built on one assumption: civic disengagement is mostly a UX problem.",
     abilities: [
-      { key: 'C', name: 'Issue Reporting', desc: 'Geotagged civic reports via Google Maps.' },
-      { key: 'Q', name: 'Live Data Map', desc: 'Community data on an interactive Leaflet layer.' },
-      { key: 'E', name: 'Policy Summarizer', desc: 'AI distills legislation into plain English.' },
-      { key: 'X', name: 'Full-Stack Grid', desc: 'React, Flask and PostgreSQL, end to end.', ult: true },
+      { key: 'C', name: 'Issue Reporting', desc: "Residents drop geotagged reports — potholes, outages, hazards — straight onto a live city map via the Google Maps API." },
+      { key: 'Q', name: 'Live Data Map', desc: "Community data layered onto an interactive Leaflet map, so what's happening in a district is legible at a glance." },
+      { key: 'E', name: 'Policy Summarizer', desc: "AI distills dense legislation into plain English — turning forty pages of legalese into something a resident will actually read." },
+      { key: 'X', name: 'Full-Stack Grid', desc: "A complete React, Flask and PostgreSQL system tying reporting, data and policy into one civic platform.", ult: true },
     ],
     stack: 'react · flask · postgresql · google maps · leaflet',
   },
@@ -95,10 +113,10 @@ const AGENTS = [
     tagline: 'How much of your measurement is noise?',
     bio: "A Monte Carlo simulation that asks what most combustion experiments wave away — how much of a flame-speed measurement is actually noise? It models camera jitter and timing error, then runs thousands of randomized trials to find the truth.",
     abilities: [
-      { key: 'C', name: 'Noise Model', desc: 'Simulates timing jitter and imaging error.' },
-      { key: 'Q', name: 'Monte Carlo', desc: 'Thousands of randomized measurement trials.' },
-      { key: 'E', name: 'Cantera Solver', desc: 'Chemical kinetics and flame-speed physics.' },
-      { key: 'X', name: 'Uncertainty Map', desc: 'Quantifies the true confidence of a result.', ult: true },
+      { key: 'C', name: 'Noise Model', desc: "Simulates the real error sources in a combustion experiment — camera timing jitter, imaging noise and edge-detection slop." },
+      { key: 'Q', name: 'Monte Carlo', desc: "Runs thousands of randomized trials, propagating those errors through to see how the final measurement scatters." },
+      { key: 'E', name: 'Cantera Solver', desc: "Uses Cantera for the underlying chemical kinetics and flame-speed physics, so the simulation is grounded in real combustion science." },
+      { key: 'X', name: 'Uncertainty Map', desc: "Outputs the true confidence interval of a flame-speed measurement — the number most experiments quietly assume away.", ult: true },
     ],
     stack: 'python · numpy · pandas · matplotlib · cantera',
   },
@@ -108,26 +126,15 @@ const AGENTS = [
     tagline: 'When does cooperation become inevitable?',
     bio: "Undergraduate research with Dr. Timothy McMahan at the University of North Texas. Agent-based simulations of the repeated Prisoner's Dilemma, mapping the exact conditions under which cooperation stops being a fluke and becomes inevitable.",
     abilities: [
-      { key: 'C', name: 'Agent Model', desc: 'Parameterized strategy agents in code.' },
-      { key: 'Q', name: 'Repeated Games', desc: "Thousands of iterated Prisoner's Dilemma rounds." },
-      { key: 'E', name: 'Strategy Analysis', desc: 'Tracks cooperation trends across trials.' },
-      { key: 'X', name: 'Emergence', desc: 'Maps when cooperation locks in for good.', ult: true },
+      { key: 'C', name: 'Agent Model', desc: "Parameterized strategy agents implemented in code — each one a different rule for when to cooperate and when to defect." },
+      { key: 'Q', name: 'Repeated Games', desc: "Thousands of iterated Prisoner's Dilemma rounds, so strategies are judged on the long game, not a single move." },
+      { key: 'E', name: 'Strategy Analysis', desc: "Tracks how cooperation rises or collapses across trials, comparing outcome distributions between strategies." },
+      { key: 'X', name: 'Emergence', desc: "Maps the exact conditions under which cooperation stops being a fluke and locks in as the inevitable equilibrium.", ult: true },
     ],
     stack: 'python · game theory · simulation · statistics',
   },
 ];
 
-/* ─── Roster (your roles = your squad) ─── */
-const ROSTER = [
-  { n: '01', org: 'AAYUSH PAL', role: 'Founder · You', you: true },
-  { n: '02', org: 'Univ. of North Texas', role: 'Research Assistant' },
-  { n: '03', org: 'STEM Tutoring Co.', role: 'Founder · $3K MRR' },
-  { n: '04', org: 'TAMS Academic Society', role: 'President' },
-  { n: '05', org: 'TAMS Solar Car', role: 'Aero Design Lead' },
-  { n: '06', org: 'HackTAMS', role: 'Jr. Coordinator' },
-];
-
-/* ─── Contact channels ─── */
 const CONTACT = [
   { label: 'EMAIL', value: 'aayush.pal2008@gmail.com', href: 'mailto:aayush.pal2008@gmail.com' },
   { label: 'GITHUB', value: '@Myssttx', href: 'https://github.com/Myssttx' },
@@ -138,7 +145,8 @@ const CONTACT = [
 /* ════════════════════════════════════════════════════════════════ */
 
 const app = document.querySelector('#app');
-let activeId = AGENTS[0].id;
+let activeId = null;      // ← starts BLANK
+let activeTab = 'info';
 
 function buildShell() {
   app.innerHTML = `
@@ -153,41 +161,38 @@ function buildShell() {
 
   <div class="fx" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <div class="tb-left">
-      <span class="diamond"></span>
+  <div class="scene">
+    <div class="scene-glow"></div>
+
+    <div class="mapbox">
+      <div class="mapbox-icon"><span></span></div>
       <div>
-        <div class="tb-title">AGENT SELECT</div>
-        <div class="tb-by">PERSONAL SITE OF AAYUSH PAL</div>
+        <div class="mapbox-title">AGENT SELECT</div>
+        <div class="mapbox-sub">AAYUSH PAL — PORTFOLIO '26</div>
       </div>
     </div>
-    <div class="tb-center">
-      <div class="tb-cap">// AGE</div>
-      <div class="timer"><span class="age" id="age"><span class="age-int">--</span><span class="age-dec"></span></span></div>
-    </div>
-    <div class="tb-right">
-      <div class="tb-cap">// LOBBY</div>
-      <div class="tb-mode">YC STARTUP SCHOOL '26</div>
-    </div>
-  </header>
 
-  <div class="main">
-    <aside class="roster">
-      <div class="panel-cap">// ROSTER</div>
-      <div id="roster">${ROSTER.map(rosterCard).join('')}</div>
+    <aside class="grid-panel">
+      <div class="panel-cap">// AGENTS — ${AGENTS.length} AVAILABLE</div>
+      <div class="agrid" id="agrid">${AGENTS.map(gridTile).join('')}</div>
+      <div class="panel-hint">SELECT AN AGENT &nbsp;·&nbsp; ◄ ► OR 1–${AGENTS.length}</div>
     </aside>
-    <div class="stage" id="stage"></div>
-  </div>
 
-  <div class="bottombar">
-    <div class="bb-pick">
-      <div class="panel-cap">// SELECT AGENT &nbsp;—&nbsp; ${AGENTS.length} AVAILABLE &nbsp;·&nbsp; ◄ ► TO CYCLE</div>
-      <div class="picker" id="picker">${AGENTS.map(pickerCard).join('')}</div>
+    <div class="character blank" id="character"></div>
+
+    <section class="info-panel" id="infopanel"></section>
+
+    <div class="lockzone">
+      <div class="timer-cap">// AGE</div>
+      <div class="timer"><span class="age" id="age"><span class="age-int">--</span><span class="age-dec"></span></span></div>
+      <button class="lockin" id="lockin" disabled>
+        <span class="li-cap">// READY</span>
+        <span class="li-main">LOCK IN</span>
+      </button>
     </div>
-    <button class="lockin" id="lockin">
-      <span class="li-cap">// READY</span>
-      <span class="li-main">LOCK IN</span>
-    </button>
+
+    <div class="flavor flavor-left">TEAM // AAYUSH PAL</div>
+    <div class="flavor flavor-right">LOBBY // YC STARTUP SCHOOL '26 &nbsp;&#9670;&#9670;&#9670;&#9670;&#9670;</div>
   </div>
 
   <div class="modal" id="modal" hidden>
@@ -196,7 +201,7 @@ function buildShell() {
       <button class="modal-x" data-close aria-label="Close">&#10005;</button>
       <div class="modal-cap">// AGENT LOCKED IN</div>
       <div class="modal-title">OPEN A CHANNEL</div>
-      <p class="modal-sub">Building at the edge of physics, code, or education — or want to argue about one of the agents? Reach out.</p>
+      <p class="modal-sub">Building at the edge of physics, code or education — or want to argue about one of the agents? Reach out.</p>
       <div class="modal-grid">
         ${CONTACT.map(c => `<a class="cc" href="${c.href}" target="_blank" rel="noopener"><span class="cc-cap">${c.label}</span><span class="cc-val">${c.value}</span></a>`).join('')}
       </div>
@@ -204,73 +209,113 @@ function buildShell() {
   </div>`;
 }
 
-function rosterCard(r) {
-  return `<div class="rcard ${r.you ? 'you' : ''}">
-    <div class="rc-n">${r.n}</div>
-    <div class="rc-body">
-      <div class="rc-org">${r.org}</div>
-      <div class="rc-role">${r.role}</div>
-    </div>
-    <div class="rc-lock">${r.you ? '&#9733;' : '&#10003;'}</div>
-  </div>`;
-}
-
-function pickerCard(a) {
-  return `<button class="ptile" data-id="${a.id}" title="${a.name}">
-    <span class="ptile-glyph" style="color:${a.accent}">${GLYPHS[a.id]}</span>
-    <span class="ptile-name">${a.short}</span>
+function gridTile(a) {
+  return `<button class="atile" data-id="${a.id}" title="${a.name}">
+    <span class="atile-glyph" style="color:${a.accent}">${GLYPHS[a.id]}</span>
+    <span class="atile-name">${a.short}</span>
   </button>`;
 }
 
-function renderStage() {
-  const a = AGENTS.find(x => x.id === activeId);
-  document.documentElement.style.setProperty('--agent', a.accent);
-  const stage = document.getElementById('stage');
-  stage.innerHTML = `
-    <div class="render">
+/* ─── Center character ─── */
+function renderCharacter() {
+  const el = document.getElementById('character');
+  if (!activeId) {
+    el.classList.add('blank');
+    el.innerHTML = `
       <span class="corner tl"></span><span class="corner tr"></span>
       <span class="corner bl"></span><span class="corner br"></span>
-      <span class="scanbar"></span>
-      <div class="render-ghost">${a.short}</div>
-      <div class="render-emblem">${GLYPHS[a.id]}</div>
-      <div class="render-meta">
-        <div class="render-role">&#9670; ${a.role}</div>
-        <h1 class="render-name">${a.name}</h1>
-        <div class="abilities">
-          ${a.abilities.map(ab => `
-            <div class="ability ${ab.ult ? 'ult' : ''}">
-              <div class="ab-key">${ab.key}</div>
-              <div class="ab-text">
-                <div class="ab-name">${ab.name}</div>
-                <div class="ab-desc">${ab.desc}</div>
-              </div>
-            </div>`).join('')}
-        </div>
-      </div>
-    </div>
-    <aside class="dossier">
-      <div class="dossier-cap">// INTEL</div>
-      <div class="dossier-status"><span class="dot"></span>STATUS // ${a.status}</div>
-      <div class="dossier-tag">${a.tagline}</div>
-      <p class="dossier-bio">${a.bio}</p>
-      <div class="dossier-stack-cap">${a.id === 'aayush' ? '// LOADOUT' : '// STACK'}</div>
-      <div class="dossier-stack">${a.stack}</div>
-    </aside>`;
-  stage.classList.remove('enter');
-  void stage.offsetWidth;
-  stage.classList.add('enter');
+      <div class="char-blank">
+        <div class="char-blank-diamond"></div>
+        <div class="char-blank-text">AWAITING SELECTION</div>
+        <div class="char-blank-hint">// no agent loaded</div>
+      </div>`;
+    return;
+  }
+  const a = AGENTS.find(x => x.id === activeId);
+  el.classList.remove('blank');
+  el.innerHTML = `
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <span class="char-scan"></span>
+    <div class="char-ghost">${a.short}</div>
+    <div class="char-emblem">${GLYPHS[a.id]}</div>`;
+  el.classList.remove('enter');
+  void el.offsetWidth;
+  el.classList.add('enter');
 }
 
+/* ─── Right info panel ─── */
+function renderInfo() {
+  const panel = document.getElementById('infopanel');
+  if (!activeId) {
+    panel.classList.remove('has-agent');
+    panel.innerHTML = `
+      <div class="ip-blank">
+        <div class="ip-cap">// no agent selected</div>
+        <div class="ip-blank-title">SELECT AN AGENT</div>
+        <p class="ip-blank-sub">Choose an agent from the grid on the left to load their full breakdown — abilities, intel and loadout.</p>
+      </div>`;
+    return;
+  }
+  const a = AGENTS.find(x => x.id === activeId);
+  panel.classList.add('has-agent');
+  panel.innerHTML = `
+    <div class="ip-role">&#9670; ${a.role}</div>
+    <h1 class="ip-name">${a.name}</h1>
+    <div class="ip-tabs">
+      <button class="ip-tab ${activeTab === 'info' ? 'active' : ''}" data-tab="info">INFO</button>
+      ${a.abilities.map(ab => `<button class="ip-tab ip-tab-key ${activeTab === ab.key ? 'active' : ''} ${ab.ult ? 'ult' : ''}" data-tab="${ab.key}">${ab.key}</button>`).join('')}
+    </div>
+    <div class="ip-content">${infoContent(a)}</div>`;
+}
+
+function infoContent(a) {
+  if (activeTab === 'info') {
+    return `
+      <div class="ip-tag">${a.tagline}</div>
+      <p class="ip-bio">${a.bio}</p>
+      ${a.positions ? `
+        <div class="ip-sub">// current positions</div>
+        <div class="ip-pos">
+          ${a.positions.map(p => `<div class="ip-pos-row"><span class="ip-pos-role">${p.role}</span><span class="ip-pos-org">${p.org}</span></div>`).join('')}
+        </div>` : ''}
+      <div class="ip-sub">// role &mdash; ${a.role}</div>
+      <p class="ip-roledesc">${ROLES[a.role]}</p>
+      <div class="ip-stackcap">${a.id === 'aayush' ? '// loadout' : '// stack'}</div>
+      <div class="ip-stack">${a.stack}</div>`;
+  }
+  const ab = a.abilities.find(x => x.key === activeTab);
+  return `
+    <div class="ip-abil">
+      <div class="ip-abil-key ${ab.ult ? 'ult' : ''}">${ab.key}</div>
+      <div>
+        <div class="ip-abil-cap">${ab.ult ? 'ULTIMATE' : 'ABILITY · ' + ab.key}</div>
+        <div class="ip-abil-name">${ab.name}</div>
+      </div>
+    </div>
+    <p class="ip-abil-desc">${ab.desc}</p>`;
+}
+
+/* ─── Selection ─── */
 function selectAgent(id) {
-  if (!AGENTS.some(a => a.id === id)) return;
+  const a = AGENTS.find(x => x.id === id);
+  if (!a) return;
   activeId = id;
-  renderStage();
-  document.querySelectorAll('.pcard').forEach(el => {
-    el.classList.toggle('active', el.dataset.id === id);
-  });
+  activeTab = 'info';
+  document.documentElement.style.setProperty('--agent', a.accent);
+  renderCharacter();
+  renderInfo();
+  document.querySelectorAll('.atile').forEach(t => t.classList.toggle('active', t.dataset.id === id));
+  document.getElementById('lockin').disabled = false;
+}
+
+function selectTab(tab) {
+  activeTab = tab;
+  renderInfo();
 }
 
 function cycleAgent(dir) {
+  if (!activeId) { selectAgent(dir > 0 ? AGENTS[0].id : AGENTS[AGENTS.length - 1].id); return; }
   const i = AGENTS.findIndex(a => a.id === activeId);
   selectAgent(AGENTS[(i + dir + AGENTS.length) % AGENTS.length].id);
 }
@@ -311,21 +356,24 @@ function runBoot() {
   const status = document.getElementById('boot-status');
   const msgs = ['SECURING CONNECTION', 'LOADING AGENTS', 'SYNCING ROSTER', 'AGENT SELECT READY'];
   let i = 0;
-  const iv = setInterval(() => {
-    i++;
-    if (i < msgs.length) status.textContent = msgs[i];
-  }, 340);
+  const iv = setInterval(() => { i++; if (i < msgs.length) status.textContent = msgs[i]; }, 340);
   setTimeout(() => { clearInterval(iv); status.textContent = msgs[msgs.length - 1]; boot.classList.add('done'); }, 1450);
   setTimeout(() => boot.remove(), 2050);
 }
 
 /* ─── Events ─── */
 function bindEvents() {
-  document.getElementById('picker').addEventListener('click', e => {
-    const card = e.target.closest('.pcard');
-    if (card) selectAgent(card.dataset.id);
+  document.getElementById('agrid').addEventListener('click', e => {
+    const tile = e.target.closest('.atile');
+    if (tile) selectAgent(tile.dataset.id);
   });
-  document.getElementById('lockin').addEventListener('click', openModal);
+  document.getElementById('infopanel').addEventListener('click', e => {
+    const tab = e.target.closest('.ip-tab');
+    if (tab) selectTab(tab.dataset.tab);
+  });
+  document.getElementById('lockin').addEventListener('click', () => {
+    if (activeId) openModal();
+  });
   document.getElementById('modal').addEventListener('click', e => {
     if (e.target.dataset.close !== undefined) closeModal();
   });
@@ -333,12 +381,15 @@ function bindEvents() {
     if (e.key === 'Escape') closeModal();
     if (e.key === 'ArrowRight') cycleAgent(1);
     if (e.key === 'ArrowLeft') cycleAgent(-1);
+    const n = parseInt(e.key, 10);
+    if (n >= 1 && n <= AGENTS.length) selectAgent(AGENTS[n - 1].id);
   });
 }
 
 /* ─── Init ─── */
 buildShell();
-selectAgent(activeId);
+renderCharacter();
+renderInfo();
 startAgeCounter();
 bindEvents();
 runBoot();
