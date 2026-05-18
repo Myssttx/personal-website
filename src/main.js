@@ -162,6 +162,9 @@ function buildShell() {
   <div class="fx" aria-hidden="true"></div>
 
   <div class="scene">
+    <div class="env-bloom"></div>
+    <div class="env-horizon"></div>
+    <div class="env-floor"></div>
     <div class="scene-glow"></div>
 
     <div class="mapbox">
