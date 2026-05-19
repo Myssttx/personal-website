@@ -81,7 +81,7 @@ const AGENTS = [
     id: 'aayush', short: 'AAYUSH', name: 'AAYUSH PAL', role: 'THE PLAYER',
     accent: '#ff4655', status: 'FOUNDER · ACTIVE',
     tagline: 'Builder. Researcher. Founder.',
-    bio: "Seventeen, based in Denton, Texas, studying at the Texas Academy of Mathematics and Sciences. I build things that turn messy reality into something a computer can think about. The agents on this roster are the projects I've built, the research I'm running and the teams I help lead — every one an attempt to take something complicated and make it legible.",
+    bio: "Seventeen, based in Denton, Texas, studying at the Texas Academy of Mathematics and Sciences. I build things that turn messy reality into something a computer can think about — the projects, research and teams on this roster are each an attempt to take something complicated and make it legible. And the agent-select theme isn't random: I peaked around top 1200 in Valorant, and the game is a big enough part of me that building my site as a roster you scroll through and lock into just felt right.",
     abilities: [
       { key: 'C', name: 'Right Abstraction', desc: "Most 'talent gaps' in math aren't about ability — they're timing problems. A student handed the wrong representation three years too early looks behind forever, until someone swaps the abstraction." },
       { key: 'Q', name: 'Cheap Empiricism', desc: "A good simulation is the cheapest form of experiment. Model the system well enough and you can ask it a thousand questions for the price of running one in the real world." },
