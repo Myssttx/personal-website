@@ -1,7 +1,7 @@
 import './style.css';
 
 /* ════════════════════════════════════════════════════════════════
-   ✏️  EDIT HERE — birthday drives the live AGE counter.
+   ✏️  EDIT HERE: birthday drives the live AGE counter.
    ════════════════════════════════════════════════════════════════ */
 const BIRTH_DATE = '2008-10-21';
 
@@ -68,9 +68,9 @@ const GLYPHS = {
 
 /* ─── Role class descriptions ─── */
 const ROLES = {
-  'THE PLAYER': "The one making the picks. Founder, researcher and tutor — the throughline connecting every agent on this roster.",
+  'THE PLAYER': "The one making the picks: founder, researcher, tutor, and the throughline behind every agent on this roster.",
   'DUELIST': "Duelists take space and force the tempo. They create the openings everyone else builds on.",
-  'CONTROLLER': "Controllers carve up dangerous territory — bending a messy map into something a team can actually use.",
+  'CONTROLLER': "Controllers carve up dangerous territory, bending a messy map into something a team can actually use.",
   'INITIATOR': "Initiators challenge what's hidden. They gather intel, expose the unknown and set up the push.",
   'SENTINEL': "Sentinels are the anchors. They hold the line, watch the long game and lock a space down once it's won.",
 };
@@ -81,11 +81,11 @@ const AGENTS = [
     id: 'aayush', short: 'AAYUSH', name: 'AAYUSH PAL', role: 'THE PLAYER',
     accent: '#ff4655', status: 'FOUNDER · ACTIVE',
     tagline: 'Builder. Researcher. Founder.',
-    bio: "I'm 17, based in Denton, Texas, studying at TAMS — an early-college math and science program. I build a lot: the agents on this roster are software projects I've shipped, a research simulation, the tutoring company I run, and the teams I help lead. When something's broken or harder than it needs to be, I'd rather build the fix than sit around. And the agent-select theme isn't random — I peaked around top 1200 in Valorant, and the game's a big enough part of me that making my site a roster you scroll through and lock into just felt right.",
+    bio: "I'm 17, based in Denton, Texas, studying at TAMS, an early-college math and science program. I build a lot: the agents on this roster are software projects I've shipped, a research simulation, the tutoring company I run, and the teams I help lead. When something's broken or harder than it needs to be, I'd rather build the fix than sit around. And the agent-select theme isn't random. I peaked around top 1200 in Valorant, and the game's a big enough part of me that making my site a roster you scroll through and lock into just felt right.",
     abilities: [
-      { key: 'C', name: 'Right Abstraction', desc: "Most 'talent gaps' in math aren't about ability — they're timing problems. A student handed the wrong representation three years too early looks behind forever, until someone swaps the abstraction." },
+      { key: 'C', name: 'Right Abstraction', desc: "Most 'talent gaps' in math aren't about ability. They're timing problems: a student handed the wrong representation three years too early looks behind forever, until someone swaps the abstraction." },
       { key: 'Q', name: 'Cheap Empiricism', desc: "A good simulation is the cheapest form of experiment. Model the system well enough and you can ask it a thousand questions for the price of running one in the real world." },
-      { key: 'E', name: 'Decision-First', desc: "The problems worth chasing aren't the hardest ones — they're the ones whose answer changes what someone actually does tomorrow morning." },
+      { key: 'E', name: 'Decision-First', desc: "The problems worth chasing aren't the hardest ones. They're the ones whose answer changes what someone actually does tomorrow morning." },
       { key: 'X', name: 'Teach To Know', desc: "You don't truly understand something until you've taught it to someone who didn't want to learn it. Resistance is the real test of whether your model holds.", ult: true },
     ],
     stack: 'denton tx · tams · founder · researcher',
@@ -94,11 +94,11 @@ const AGENTS = [
     id: 'flowiq', short: 'FLOWIQ', name: 'FLOWIQ', role: 'DUELIST',
     accent: '#3fd0e8', status: 'ACTIVE · AUG 2025',
     tagline: 'Aerodynamics at the speed of intuition.',
-    bio: "An AI-driven aerodynamics tool. Draw an airfoil, watch what the air does to it. CFD is slow and expensive — so FlowIQ trains a predictive model on simulation data and collapses an hours-long iteration loop down to milliseconds.",
+    bio: "An AI-driven aerodynamics tool. Draw an airfoil, watch what the air does to it. CFD is slow and expensive, so FlowIQ trains a predictive model on simulation data and collapses an hours-long iteration loop down to milliseconds.",
     abilities: [
-      { key: 'C', name: 'Predictive Net', desc: "A TensorFlow model trained on CFD airflow data — it learns the mapping from airfoil geometry to aerodynamic behavior so you don't have to re-solve from scratch." },
+      { key: 'C', name: 'Predictive Net', desc: "A TensorFlow model trained on CFD airflow data. It learns the mapping from airfoil geometry to aerodynamic behavior so you don't have to re-solve from scratch." },
       { key: 'Q', name: 'Lift / Drag Solver', desc: "Scores and optimizes the lift-to-drag ratio across a space of airfoil designs, surfacing the shapes that actually perform." },
-      { key: 'E', name: '3D Viewport', desc: "Renders airflow over the airfoil in real time with Three.js — the simulation becomes something you can see and rotate, not just a number." },
+      { key: 'E', name: '3D Viewport', desc: "Renders airflow over the airfoil in real time with Three.js. The simulation becomes something you can see and rotate, not just a number." },
       { key: 'X', name: 'Millisecond Loop', desc: "Collapses the design-test-iterate loop from hours of CFD down to milliseconds, so airfoil design becomes something you can feel your way through.", ult: true },
     ],
     stack: 'python · tensorflow · fastapi · react · three.js',
@@ -109,9 +109,9 @@ const AGENTS = [
     tagline: 'Local government you can actually use.',
     bio: "A civic-engagement platform. Report a pothole, track what's moving in your district, and read AI-summarized legislation instead of forty pages of legalese. Built on one assumption: civic disengagement is mostly a UX problem.",
     abilities: [
-      { key: 'C', name: 'Issue Reporting', desc: "Residents drop geotagged reports — potholes, outages, hazards — straight onto a live city map via the Google Maps API." },
+      { key: 'C', name: 'Issue Reporting', desc: "Residents drop geotagged reports (potholes, outages, hazards) straight onto a live city map via the Google Maps API." },
       { key: 'Q', name: 'Live Data Map', desc: "Community data layered onto an interactive Leaflet map, so what's happening in a district is legible at a glance." },
-      { key: 'E', name: 'Policy Summarizer', desc: "AI distills dense legislation into plain English — turning forty pages of legalese into something a resident will actually read." },
+      { key: 'E', name: 'Policy Summarizer', desc: "AI distills dense legislation into plain English, turning forty pages of legalese into something a resident will actually read." },
       { key: 'X', name: 'Full-Stack Grid', desc: "A complete React, Flask and PostgreSQL system tying reporting, data and policy into one civic platform.", ult: true },
     ],
     stack: 'react · flask · postgresql · google maps · leaflet',
@@ -120,12 +120,12 @@ const AGENTS = [
     id: 'combustion', short: 'COMBUSTION', name: 'COMBUSTION ENGINE', role: 'INITIATOR',
     accent: '#ff8a3d', status: 'ACTIVE · JAN 2026',
     tagline: 'How much of your measurement is noise?',
-    bio: "A Monte Carlo simulation that asks what most combustion experiments wave away — how much of a flame-speed measurement is actually noise? It models camera jitter and timing error, then runs thousands of randomized trials to find the truth.",
+    bio: "A Monte Carlo simulation that asks what most combustion experiments wave away: how much of a flame-speed measurement is actually noise? It models camera jitter and timing error, then runs thousands of randomized trials to find the truth.",
     abilities: [
-      { key: 'C', name: 'Noise Model', desc: "Simulates the real error sources in a combustion experiment — camera timing jitter, imaging noise and edge-detection slop." },
+      { key: 'C', name: 'Noise Model', desc: "Simulates the real error sources in a combustion experiment: camera timing jitter, imaging noise and edge-detection slop." },
       { key: 'Q', name: 'Monte Carlo', desc: "Runs thousands of randomized trials, propagating those errors through to see how the final measurement scatters." },
       { key: 'E', name: 'Cantera Solver', desc: "Uses Cantera for the underlying chemical kinetics and flame-speed physics, so the simulation is grounded in real combustion science." },
-      { key: 'X', name: 'Uncertainty Map', desc: "Outputs the true confidence interval of a flame-speed measurement — the number most experiments quietly assume away.", ult: true },
+      { key: 'X', name: 'Uncertainty Map', desc: "Outputs the true confidence interval of a flame-speed measurement, the number most experiments quietly assume away.", ult: true },
     ],
     stack: 'python · numpy · pandas · matplotlib · cantera',
   },
@@ -135,7 +135,7 @@ const AGENTS = [
     tagline: 'When does cooperation become inevitable?',
     bio: "Undergraduate research with Dr. Timothy McMahan at the University of North Texas. Agent-based simulations of the repeated Prisoner's Dilemma, mapping the exact conditions under which cooperation stops being a fluke and becomes inevitable.",
     abilities: [
-      { key: 'C', name: 'Agent Model', desc: "Parameterized strategy agents implemented in code — each one a different rule for when to cooperate and when to defect." },
+      { key: 'C', name: 'Agent Model', desc: "Parameterized strategy agents implemented in code, each a different rule for when to cooperate and when to defect." },
       { key: 'Q', name: 'Repeated Games', desc: "Thousands of iterated Prisoner's Dilemma rounds, so strategies are judged on the long game, not a single move." },
       { key: 'E', name: 'Strategy Analysis', desc: "Tracks how cooperation rises or collapses across trials, comparing outcome distributions between strategies." },
       { key: 'X', name: 'Emergence', desc: "Maps the exact conditions under which cooperation stops being a fluke and locks in as the inevitable equilibrium.", ult: true },
@@ -146,11 +146,11 @@ const AGENTS = [
     id: 'tutoring', short: 'TUTORING', name: 'TUTORING CO.', role: 'DUELIST',
     accent: '#f2b134', status: 'FOUNDER · AUG 2023',
     tagline: 'Bootstrapped to $3K/month, one student at a time.',
-    bio: "A student-run STEM tutoring company I started at fifteen. It grew past $3,000 in monthly revenue because I figured out most kids aren't behind — they were handed the wrong abstraction at the wrong time. Personalized math, physics and chemistry built around real conceptual understanding.",
+    bio: "A student-run STEM tutoring company I started at fifteen. It grew past $3,000 in monthly revenue because I figured out most kids aren't behind: they were handed the wrong abstraction at the wrong time. Personalized math, physics and chemistry built around real conceptual understanding.",
     abilities: [
-      { key: 'C', name: 'Personalized Curriculum', desc: "Every student gets lessons designed around their actual gaps — conceptual understanding and critical thinking, never memorization." },
-      { key: 'Q', name: 'Grade Skipping', desc: "Targeted exam prep that's helped 30+ students place out of math classes — more than 60 grade levels skipped in total." },
-      { key: 'E', name: 'Conceptual Teaching', desc: "Each lesson goes after the real misconception instead of the symptom — fixing the wrong abstraction at its root." },
+      { key: 'C', name: 'Personalized Curriculum', desc: "Every student gets lessons designed around their actual gaps: conceptual understanding and critical thinking, never memorization." },
+      { key: 'Q', name: 'Grade Skipping', desc: "Targeted exam prep that's helped 30+ students place out of math classes. More than 60 grade levels skipped in total." },
+      { key: 'E', name: 'Conceptual Teaching', desc: "Each lesson goes after the real misconception instead of the symptom, fixing the wrong abstraction at its root." },
       { key: 'X', name: 'Bootstrapped Venture', desc: "Founded at fifteen and grown entirely student-run to over $3,000 in monthly recurring revenue.", ult: true },
     ],
     stack: 'founded 2023 · flower mound tx · $3k+ mrr · 30+ students',
@@ -159,7 +159,7 @@ const AGENTS = [
     id: 'society', short: 'ACAD SOC', name: 'ACADEMIC SOCIETY', role: 'SENTINEL',
     accent: '#4d9fff', status: 'PRESIDENT · AUG 2025',
     tagline: 'Running the academic heart of TAMS.',
-    bio: "As President of the TAMS Academic Society — the primary academic organization on campus — I run tutoring initiatives, academic workshops and student events that make peer learning the default. Most of the job is logistics, recruiting and building programming people actually show up for.",
+    bio: "As President of the TAMS Academic Society, the primary academic organization on campus, I run tutoring initiatives, academic workshops and student events that make peer learning the default. Most of the job is logistics, recruiting and building programming people actually show up for.",
     abilities: [
       { key: 'C', name: 'Tutoring Initiatives', desc: "Organizes campus-wide peer tutoring so academic help is always one student away." },
       { key: 'Q', name: 'Academic Workshops', desc: "Runs workshops and study events that turn learning into something collaborative." },
@@ -185,7 +185,7 @@ const AGENTS = [
     id: 'solarcar', short: 'SOLAR CAR', name: 'TAMS SOLAR CAR', role: 'CONTROLLER',
     accent: '#f5e050', status: 'AERO LEAD · AUG 2025',
     tagline: 'Designing the air around a race car.',
-    bio: "Aerodynamic Design Team Lead on the TAMS Solar Car. I spearhead the design and manufacturing of the car's aerodynamic kit — running thousands of CFD iterations to optimize airflow for racing — alongside a multidisciplinary team prototyping and evaluating vehicle systems for competition.",
+    bio: "Aerodynamic Design Team Lead on the TAMS Solar Car. I spearhead the design and manufacturing of the car's aerodynamic kit, running thousands of CFD iterations to optimize airflow for racing, alongside a multidisciplinary team prototyping and evaluating vehicle systems for competition.",
     abilities: [
       { key: 'C', name: 'Aero Kit Design', desc: "Designs and manufactures the car's aerodynamic kit for competition racing." },
       { key: 'Q', name: 'CFD Iteration', desc: "Runs thousands of CFD simulations, optimizing airflow over the body shape by shape." },
@@ -253,7 +253,7 @@ function buildShell() {
       <div class="mapbox-icon"><span></span></div>
       <div class="mapbox-text">
         <div class="mapbox-title">AGENT SELECT</div>
-        <div class="mapbox-sub">PORTFOLIO — CUSTOM</div>
+        <div class="mapbox-sub">PORTFOLIO · CUSTOM</div>
       </div>
       <div class="mapbox-thumb"><span>AP</span></div>
     </div>
@@ -293,7 +293,7 @@ function buildShell() {
       <button class="modal-x" data-close aria-label="Close">&#10005;</button>
       <div class="modal-cap">// AGENT LOCKED IN</div>
       <div class="modal-title">OPEN A CHANNEL</div>
-      <p class="modal-sub">Building at the edge of physics, code or education — or want to argue about one of the agents? Reach out.</p>
+      <p class="modal-sub">Building at the edge of physics, code or education, or want to argue about one of the agents? Reach out.</p>
       <div class="modal-grid">
         ${CONTACT.map(c => `<a class="cc" href="${c.href}" target="_blank" rel="noopener"><span class="cc-cap">${c.label}</span><span class="cc-val">${c.value}</span></a>`).join('')}
       </div>
@@ -354,7 +354,7 @@ function renderInfo() {
       <div class="ip-blank">
         <div class="ip-role">// NO AGENT SELECTED</div>
         <h1 class="ip-name">SELECT AN AGENT</h1>
-        <p class="ip-desc">Pick an agent from the grid on the left to load their full breakdown — abilities, intel and loadout. Use the role filters above the grid, or the number keys 1–${AGENTS.length}.</p>
+        <p class="ip-desc">Pick an agent from the grid on the left to load their full breakdown: abilities, intel and loadout. Use the role filters above the grid, or the number keys 1-${AGENTS.length}.</p>
       </div>`;
     return;
   }
