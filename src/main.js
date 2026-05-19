@@ -130,8 +130,8 @@ const AGENTS = [
     stack: 'python · numpy · pandas · matplotlib · cantera',
   },
   {
-    id: 'research', short: 'P. DILEMMA', name: "PRISONER'S DILEMMA", role: 'SENTINEL',
-    accent: '#a78bfa', status: 'ACTIVE · SEP 2025',
+    id: 'research', short: 'RESEARCH', name: 'UNDERGRAD RESEARCH', role: 'SENTINEL',
+    accent: '#a78bfa', status: 'RESEARCH ASSISTANT · UNT',
     tagline: 'When does cooperation become inevitable?',
     bio: "Undergraduate research with Dr. Timothy McMahan at the University of North Texas. Agent-based simulations of the repeated Prisoner's Dilemma, mapping the exact conditions under which cooperation stops being a fluke and becomes inevitable.",
     abilities: [
