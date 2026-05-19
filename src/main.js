@@ -7,70 +7,62 @@ const BIRTH_DATE = '2008-10-21';
 
 /* ─── Agent emblem artwork ─── */
 const GLYPHS = {
-  aayush: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="120 24 192 65 192 175 120 216 48 175 48 65" stroke="currentColor" stroke-width="2" opacity="0.5"/>
-    <path d="M120 70 L84 178" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
-    <path d="M120 70 L156 178" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
-    <path d="M100 142 H140" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
-    <circle cx="120" cy="70" r="7" fill="currentColor"/>
-    <path d="M48 86 V65 H69" stroke="currentColor" stroke-width="3"/>
-    <path d="M192 154 V175 H171" stroke="currentColor" stroke-width="3"/>
+  aayush: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="120 16 209 66 209 174 120 224 31 174 31 66" fill="none" stroke="currentColor" stroke-width="4"/>
+    <polygon points="120 44 184 80 184 160 120 196 56 160 56 80" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3"/>
+    <path fill="currentColor" d="M58 188 L120 56 L182 188 L150 188 L120 122 L90 188 Z"/>
+    <rect x="100" y="150" width="40" height="15" fill="currentColor"/>
   </svg>`,
-  flowiq: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M44 140 C 98 116 168 112 212 136 C 162 152 96 158 44 140 Z" stroke="currentColor" stroke-width="3"/>
-    <circle cx="48" cy="140" r="5" fill="currentColor"/>
-    <path d="M30 92 C 96 74 156 76 214 96" stroke="currentColor" stroke-width="2.4" opacity="0.75"/>
-    <path d="M28 112 C 96 96 156 98 216 116" stroke="currentColor" stroke-width="2.4" opacity="0.5"/>
-    <path d="M40 176 C 102 188 158 186 206 172" stroke="currentColor" stroke-width="2.4" opacity="0.45"/>
-    <path d="M205 89 l13 7 -13 7" stroke="currentColor" stroke-width="2.4" opacity="0.75"/>
+  flowiq: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M38 142 C 96 112 172 110 216 136 C 168 156 96 164 38 142 Z"/>
+    <circle cx="44" cy="142" r="8" fill="currentColor"/>
+    <path fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" d="M26 84 C 96 58 154 60 198 82"/>
+    <path fill="currentColor" d="M190 68 l30 14 -30 14 Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="0.5" d="M34 184 C 102 202 160 200 208 180"/>
   </svg>`,
-  civitas: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g opacity="0.4" stroke="currentColor" stroke-width="2">
-      <path d="M36 152 H204 M36 180 H204 M36 208 H204"/>
-      <path d="M70 140 V214 M106 140 V214 M142 140 V214 M178 140 V214"/>
+  civitas: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <g fill="currentColor" opacity="0.9">
+      <rect x="36" y="170" width="28" height="42"/>
+      <rect x="72" y="146" width="28" height="66"/>
+      <rect x="140" y="156" width="28" height="56"/>
+      <rect x="176" y="178" width="28" height="34"/>
     </g>
-    <path d="M120 36 C 90 36 70 60 70 88 C 70 124 120 168 120 168 C 120 168 170 124 170 88 C 170 60 150 36 120 36 Z" stroke="currentColor" stroke-width="3"/>
-    <circle cx="120" cy="88" r="19" stroke="currentColor" stroke-width="3"/>
+    <path fill-rule="evenodd" fill="currentColor" d="M120 24 C 84 24 56 52 56 90 C 56 138 120 192 120 192 C 120 192 184 138 184 90 C 184 52 156 24 120 24 Z M120 66 C 134 66 145 77 145 90 C 145 103 134 114 120 114 C 106 114 95 103 95 90 C 95 77 106 66 120 66 Z"/>
   </svg>`,
-  combustion: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M122 30 C 152 82 178 108 174 152 C 170 196 120 214 120 214 C 120 214 70 196 66 152 C 63 122 86 112 96 86 C 104 110 118 114 126 134 C 140 110 134 68 122 30 Z" stroke="currentColor" stroke-width="3"/>
-    <path d="M120 100 C 134 122 142 138 138 158 C 134 182 120 190 120 190 C 120 190 106 182 102 158 C 100 144 110 130 120 100 Z" stroke="currentColor" stroke-width="2.6" opacity="0.7"/>
+  combustion: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" fill="currentColor" d="M128 22 C 162 78 188 108 184 158 C 180 208 120 226 120 226 C 120 226 60 208 56 158 C 53 126 80 112 92 80 C 101 108 117 116 126 140 C 142 110 140 64 128 22 Z M120 112 C 134 136 142 152 139 170 C 136 192 120 200 120 200 C 120 200 104 192 101 170 C 99 156 109 140 120 112 Z"/>
   </svg>`,
-  research: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="58" y="58" width="124" height="124" stroke="currentColor" stroke-width="3"/>
-    <path d="M120 58 V182 M58 120 H182" stroke="currentColor" stroke-width="2" opacity="0.55"/>
-    <circle cx="89" cy="89" r="14" fill="currentColor"/>
-    <circle cx="151" cy="151" r="14" stroke="currentColor" stroke-width="3"/>
-    <path d="M99 99 L141 141" stroke="currentColor" stroke-width="2.6" stroke-dasharray="2 8" stroke-linecap="round"/>
-    <path d="M58 78 V58 H78 M182 162 V182 H162" stroke="currentColor" stroke-width="3"/>
+  research: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <rect x="48" y="48" width="144" height="144" fill="none" stroke="currentColor" stroke-width="8"/>
+    <path stroke="currentColor" stroke-width="4" opacity="0.4" d="M120 48 V192 M48 120 H192"/>
+    <path fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" d="M86 86 L154 154"/>
+    <circle cx="86" cy="86" r="22" fill="currentColor"/>
+    <circle cx="154" cy="154" r="20.5" fill="none" stroke="currentColor" stroke-width="9"/>
   </svg>`,
-  tutoring: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <polygon points="120 56 212 96 120 136 28 96" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M78 113 V152 C 78 152 96 176 120 176 C 144 176 162 152 162 152 V113" stroke="currentColor" stroke-width="3"/>
-    <path d="M212 96 V160" stroke="currentColor" stroke-width="3"/>
-    <circle cx="212" cy="170" r="9" stroke="currentColor" stroke-width="3"/>
-    <circle cx="120" cy="96" r="6" fill="currentColor"/>
+  tutoring: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M74 116 L120 136 L166 116 L166 150 C 166 150 150 180 120 180 C 90 180 74 150 74 150 Z"/>
+    <path fill="currentColor" d="M120 50 L224 96 L120 142 L16 96 Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" d="M212 104 V160"/>
+    <circle cx="212" cy="172" r="12" fill="currentColor"/>
   </svg>`,
-  society: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M120 34 L188 62 V118 C 188 166 120 206 120 206 C 120 206 52 166 52 118 V62 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M120 82 L130 112.3 L161.8 112.4 L136.2 131.3 L145.9 161.6 L120 143 L94.1 161.6 L103.8 131.3 L78.2 112.4 L110 112.3 Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+  society: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" fill="currentColor" d="M120 24 L200 57 V121 C 200 174 120 216 120 216 C 120 216 40 174 40 121 V57 Z M120 78 L133 111 L168 113 L141 135 L150 170 L120 150 L90 170 L99 135 L72 113 L107 111 Z"/>
   </svg>`,
-  hacktams: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="34" y="50" width="172" height="140" stroke="currentColor" stroke-width="3"/>
-    <path d="M34 78 H206" stroke="currentColor" stroke-width="3"/>
-    <circle cx="50" cy="64" r="4" fill="currentColor"/>
-    <circle cx="66" cy="64" r="4" fill="currentColor"/>
-    <path d="M96 102 L66 134 L96 166" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M144 102 L174 134 L144 166" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M132 94 L108 174" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  hacktams: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <rect x="28" y="44" width="184" height="152" rx="8" fill="none" stroke="currentColor" stroke-width="8"/>
+    <path stroke="currentColor" stroke-width="5" d="M32 78 H208"/>
+    <circle cx="52" cy="61" r="5.5" fill="currentColor"/>
+    <circle cx="71" cy="61" r="5.5" fill="currentColor"/>
+    <path fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" d="M98 110 L66 141 L98 172"/>
+    <path fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" d="M142 110 L174 141 L142 172"/>
+    <path fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" d="M130 102 L110 180"/>
   </svg>`,
-  solarcar: `<svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M30 98 C 92 72 156 72 214 94" stroke="currentColor" stroke-width="2.6" opacity="0.7"/>
-    <path d="M210 88 l14 6 -14 6" stroke="currentColor" stroke-width="2.6" opacity="0.7"/>
-    <path d="M36 120 C 94 100 152 100 208 116" stroke="currentColor" stroke-width="2.6" opacity="0.4"/>
-    <path d="M42 170 L72 140 Q 102 118 142 118 Q 182 118 200 148 L210 170 Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-    <circle cx="88" cy="170" r="17" stroke="currentColor" stroke-width="3"/>
-    <circle cx="168" cy="170" r="17" stroke="currentColor" stroke-width="3"/>
+  solarcar: `<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <path fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" d="M24 86 C 92 58 156 58 200 80"/>
+    <path fill="currentColor" d="M192 66 l30 14 -30 14 Z"/>
+    <path fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity="0.45" d="M32 112 C 96 92 152 92 206 106"/>
+    <path fill="currentColor" d="M34 166 L70 128 Q 100 106 140 106 Q 184 106 200 142 L212 166 Z"/>
+    <path fill-rule="evenodd" fill="currentColor" d="M67 176 a19 19 0 1 0 38 0 a19 19 0 1 0 -38 0 M77 176 a9 9 0 1 0 18 0 a9 9 0 1 0 -18 0 M149 176 a19 19 0 1 0 38 0 a19 19 0 1 0 -38 0 M159 176 a9 9 0 1 0 18 0 a9 9 0 1 0 -18 0"/>
   </svg>`,
 };
 
