@@ -171,8 +171,8 @@ const AGENTS = [
   {
     id: 'hacktams', short: 'HACKTAMS', name: 'HACKTAMS', role: 'INITIATOR',
     accent: '#ee5aa8', status: 'COORDINATOR · AUG 2025',
-    tagline: "Helping run TAMS's annual hackathon.",
-    bio: "Junior Coordinator for HackTAMS, the annual student hackathon run by the TAMS Computer Science Organization. I help organize logistics, support participant teams through their builds, and keep the event a welcoming on-ramp for students new to programming.",
+    tagline: "Helping run the biggest hackathon in North Texas.",
+    bio: "Junior Coordinator for HackTAMS, the biggest hackathon in North Texas, run annually by the TAMS Computer Science Organization. I help organize logistics, support participant teams through their builds, and keep the event a welcoming on-ramp for students new to programming.",
     abilities: [
       { key: 'C', name: 'Event Operations', desc: "Manages logistics and day-of operations for the annual HackTAMS hackathon." },
       { key: 'Q', name: 'Team Support', desc: "Supports participant teams through their projects, from first idea to final demo." },
